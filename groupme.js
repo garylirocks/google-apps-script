@@ -27,7 +27,7 @@ function _randomSequence(count) {
  * example:
  *
  * > groupMe(['A','A','A','A','A','A','B','B','B','B','B','B','B','B','B','B','C','C','C','C','C','C','C','C','C']);
- * > ['A1','A1','A2','A1','A2','A1','B1','B2','B3','B2','B1','B1','B2','B1','B3','B2','C1','C3','C1','C2','C2','C1','C2','C2','C1']
+ * > [1,1,2,1,2,1,1,2,3,2,1,1,2,1,3,2,1,3,1,2,2,1,2,2,1]
  *
  * @param {levels} a range within a column
  * @return an array of group numbers
@@ -67,7 +67,7 @@ function groupMe(levels) {
             continue;
         }
         var groupNumber = Math.ceil( levelCounts[l]['draws'][levelCounts[l]['current']] / groupSize );
-        result[i] = l + groupNumber;
+        result[i] = groupNumber;
         levelCounts[l]['current'] += 1;
     }
 
