@@ -40,13 +40,17 @@ function groupMe(levels) {
     var i = 0;
 
     for (i = 0; i < levels.length; i++) {
-        var e = levels[i];
-        if (levelCounts[e] === undefined) {
-            levelCounts[e] = {
+        var l = levels[i];
+        if (String(l).trim() === '') {
+            continue;
+        }
+
+        if (levelCounts[l] === undefined) {
+            levelCounts[l] = {
                 'total': 1
             };
         } else {
-            levelCounts[e]['total'] += 1;
+            levelCounts[l]['total'] += 1;
         }
     }
 
@@ -59,6 +63,9 @@ function groupMe(levels) {
 
     for (i = 0; i < levels.length; i++) {
         var l = levels[i];
+        if (String(l).trim() === '') {
+            continue;
+        }
         var groupNumber = Math.ceil( levelCounts[l]['draws'][levelCounts[l]['current']] / groupSize );
         result[i] = l + groupNumber;
         levelCounts[l]['current'] += 1;
